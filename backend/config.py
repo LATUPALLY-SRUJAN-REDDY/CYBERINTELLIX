@@ -260,7 +260,7 @@ def load_settings(require_neo4j: bool = True) -> Settings:
         http_timeout_seconds=_env_float("HTTP_TIMEOUT_SECONDS", 60.0),
         http_max_retries=_env_int("HTTP_MAX_RETRIES", 5, minimum=0),
         vector_min_score=_env_float("VECTOR_MIN_SCORE", 0.0),
-        tuning_config=_env("TUNING_CONFIG"),
+        tuning_config=_env("TUNING_CONFIG", str(DATA_DIR / "tuned_config.json") if (DATA_DIR / "tuned_config.json").is_file() else ""),
         reference_docs_dir=_env("REFERENCE_DOCS_DIR", Settings.reference_docs_dir),
         log_level=_env("LOG_LEVEL", "INFO").upper(),
     )
